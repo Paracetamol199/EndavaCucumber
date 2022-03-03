@@ -17,6 +17,7 @@ public class RestHelperMethods {
                         + " but the expected status code is: " + identifyStatusCode(statusMessage)
                 , response.getStatusCode() == identifyStatusCode(statusMessage));
     }
+
     private static int identifyStatusCode(String responseMessage) {
         int status;
 
@@ -38,12 +39,18 @@ public class RestHelperMethods {
 
     public static String getLongitudeValue(Response response) {
         JsonPath jsonResponse = RestUtil.getJsonPath(response);
-        return Float.toString(jsonResponse.get("coord.lon"));
+        if (jsonResponse.get("coord.lon") instanceof Integer) {
+            return Integer.toString(jsonResponse.get("coord.lon"));
+        } else
+            return Float.toString(jsonResponse.get("coord.lon"));
     }
 
     public static String getLatitudeValue(Response response) {
         JsonPath jsonResponse = RestUtil.getJsonPath(response);
-        return Float.toString(jsonResponse.get("coord.lat"));
+        if (jsonResponse.get("coord.lat") instanceof Integer) {
+            return Integer.toString(jsonResponse.get("coord.lat"));
+        } else
+            return Float.toString(jsonResponse.get("coord.lat"));
     }
 
     public static String getcityValue(Response response) {

@@ -1,4 +1,4 @@
-package weather.api;
+package weather.api.configuration;
 
 import java.util.ResourceBundle;
 

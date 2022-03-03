@@ -1,13 +1,12 @@
 package weather.api.steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import weather.api.TestConfiguration;
+import weather.api.configuration.TestConfiguration;
 import weather.api.models.Search;
 import weather.api.utils.RestHelperMethods;
 import weather.api.utils.RestUtil;
