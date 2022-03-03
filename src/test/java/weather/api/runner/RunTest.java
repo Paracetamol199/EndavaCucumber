@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 
 @CucumberOptions(plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json"},
         features = "src/test/resources/features",
+        glue = {"weather/api/steps"},
         tags = {"@Smoke", "~@Bug"})
 
 public class RunTest {

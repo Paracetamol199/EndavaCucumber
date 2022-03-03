@@ -17,7 +17,11 @@ public class WSStepDefinition {
     private TestConfiguration testConfiguration;
     private RestUtil restUtil;
     private Search searchBy;
-    private Response response;
+    private static Response response;
+
+    public static Response getResponse() {
+        return response;
+    }
 
     public WSStepDefinition() {
         testConfiguration = new TestConfiguration();
@@ -33,7 +37,7 @@ public class WSStepDefinition {
     }
 
     @And("^Using as city name \"([^\"]*)\"$")
-    public void usingAsCityName(String city)  {
+    public void usingAsCityName(String city) {
         searchBy.setSearchBy("city name");
         searchBy.setCityname(city);
     }
@@ -43,7 +47,6 @@ public class WSStepDefinition {
         searchBy.setSearchBy("city id");
         searchBy.setCityId(cityId);
     }
-
 
     @When("^The GET http request is performed$")
     public void theGETHttpRequestIsPerformed() {
@@ -86,22 +89,21 @@ public class WSStepDefinition {
     }
 
     @And("^Using as city longitude \"([^\"]*)\"$")
-    public void usingAsCityLongitude(String longitude)  {
+    public void usingAsCityLongitude(String longitude) {
         searchBy.setSearchBy("coordinates");
         searchBy.setLongitude(longitude);
 
     }
 
     @And("^Using as city latitude \"([^\"]*)\"$")
-    public void usingAsCityLatitude(String latitude)  {
+    public void usingAsCityLatitude(String latitude) {
         searchBy.setLatitude(latitude);
     }
 
     @And("^The city name is \"([^\"]*)\"$")
-    public void theCityNameIs(String expectedCity)  {
-        String actualCity = RestHelperMethods.getcityValue(response);
+    public void theCityNameIs(String expectedCity) {
+        String actualCity = RestHelperMethods.getCityValue(response);
         Assert.assertTrue("The city should be: " + expectedCity + " but the actual value is: " + actualCity
                 , expectedCity.equals(actualCity));
-
     }
 }

@@ -26,4 +26,19 @@ Feature: Check coordinates using WeatherAPI
     Then The longitude value is "25"
     And The latitude value is "46"
 
-  Scenario: Check that the
+  Scenario: Check that the Weather API responds with the correct country code
+    Given A request is performed to the "weather" endpoint
+    And Using as city name "Bucharest"
+    When The GET http request is performed
+    Then The response status code is "OK"
+    And The response message code is "OK"
+    Then The country code is "RO"
+
+  Scenario: Check that the Weather API responds with the correct name
+    Given A request is performed to the "weather" endpoint
+    And Using as city name "Singapore"
+    When The GET http request is performed
+    Then The response status code is "OK"
+    And The response message code is "OK"
+    Then The city name contains "Sing"
+    And The city name is "Singapore"

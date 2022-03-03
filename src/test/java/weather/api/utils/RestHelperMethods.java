@@ -53,8 +53,13 @@ public class RestHelperMethods {
             return Float.toString(jsonResponse.get("coord.lat"));
     }
 
-    public static String getcityValue(Response response) {
+    public static String getCityValue(Response response) {
         JsonPath jsonResponse = RestUtil.getJsonPath(response);
         return jsonResponse.get("name");
+    }
+
+    public static String getCountryCodeValue(Response response) {
+        JsonPath jsonResponse = RestUtil.getJsonPath(response);
+        return jsonResponse.get("sys.country");
     }
 }
